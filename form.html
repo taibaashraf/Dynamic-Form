@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <h3 class="heading">Dynamic Form</h3>
+        <p>Select the inputs fields given below</p>
+    </div>
+    <div class="container">
+        <br />
+        <select id="inputs" onchange="InputFields(this)" style="color: orange;">
+            <option id="options" value="radio button">Radio button &nbsp;&nbsp;&nbsp;&nbsp;</option>
+            <option id="options" value="textfield">textfield</option>
+            <option id="options" value="cb">checkBox</option>
+            <option id="options" value="textarea">textarea</option>
+            <option id="options" value="button">button</option>
+        </select>
+    </div>
+    <br />
+    <!-- <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" >Dropdown
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu"  id="inputs" onchange="InputFields(this)">
+          <li><a href="#" value="radio button">Radio button</a></li>
+          <li><a href="#" value="textfield">textfield</a></li>
+          <li><a href="#" value="cb">checkBox</a></li>
+          <li><a href="#" value="textarea">textarea</a></li>
+          <li><a href="#" value="button">button</a></li>
+        </ul>
+      </div> -->
+
+    <script>
+
+        //Form Elements
+        var formElements = window.prompt("How many form elements you want? ");
+        console.log(formElements);
+
+        //create a form
+        var fun = document.createElement("form");
+        fun.setAttribute('method', "post");
+        fun.setAttribute('action', "");
+
+
+        //styleSheet
+        var sheet = document.createElement('style')
+        sheet.innerHTML = "form {margin-left:7.5%; border: 1px solid grey; padding-left:1%; align-content:center;5px 1rem;border-width:500%;}";
+        document.body.appendChild(sheet);
+
+        function InputFields(inputs) {
+
+
+            if (inputs.value == "radio button") {
+
+                fun.innerHTML += "<br/> <br/><input type='radio' name='myRadioButtons[]'>";
+
+            }
+
+
+            if (inputs.value == "textfield") {
+                fun.innerHTML += " <br/> <br/><input type='email' name='myInputs[]' value='text'> ";
+
+            }
+            if (inputs.value == "cb") {
+                fun.innerHTML += " <br/> <br/><input type='checkbox' name='myCheckBoxes[]'>";
+
+            }
+
+            if (inputs.value == "textarea") {
+                fun.innerHTML += " <br/> <br/><textarea name='myTextAreas[]' placeholder='Type here'></textarea>";
+
+            }
+
+            if (inputs.value == "button") {
+                fun.innerHTML += " <br/> <br/> <button type='button' class='btn btn-warning'>Secondary</button> ";
+
+            }
+
+        }
+
+        document.getElementsByTagName('body')[0].appendChild(fun);
+
+
+
+
+    </script>
+</body>
+
+</html>
